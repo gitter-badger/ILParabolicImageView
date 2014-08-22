@@ -21,7 +21,9 @@ Pod::Spec.new do |s|
   s.license      = { :type => "MIT", :file => "LICENSE" }
   s.author             = { "Abraham Kuri" => "kurenn@icalialabs.com" }
   s.platform     = :ios
-  s.source       = { :git => "https://github.com/IcaliaLabs/ILParabolicImageView.git", :tag => "0.0.1" }
+  s.source       = { :git => "https://github.com/IcaliaLabs/ILParabolicImageView.git", :tag => "v0.0.1" }
   s.source_files  = '*.{h,m}'
+  s.requires_arc  = true
+
 
 end
