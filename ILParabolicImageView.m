@@ -1,9 +1,8 @@
 //
 //  ILParabolicImageView.m
-//  ILParabolicImageViewExample
 //
 //  Created by Abraham Kuri on 8/21/14.
-//  Copyright (c) 2014 icalialabs. All rights reserved.
+//  Copyright (c) 2014 Icalia Labs. All rights reserved.
 //
 
 #import "ILParabolicImageView.h"
@@ -27,7 +26,7 @@
     }
     
     return self;
-
+    
 }
 
 - (id)initWithImage:(UIImage *)image
@@ -65,7 +64,8 @@
 {
     // Store image
     self.imageView.image = image;
-    self.imageView.image = [self imageWithImage:image convertToSize:CGSizeMake(515, 640)];
+    self.imageView.image = [self imageWithImage:image
+                                  convertToSize:CGSizeMake(self.conversionImageWidth, self.conversionImageHeight)];
     self.imageView.contentMode = UIViewContentModeCenter;
     
     // Remove exising motion effects
@@ -92,6 +92,7 @@
     _padding = padding;
     
     // Add motion effect to image view
+    //
     // Horizontal movement
     UIInterpolatingMotionEffect *horizMotionEffect =
     [self RCC_horizontalEffectWithMinDistance:@(-self.horizontalPadding)
@@ -100,6 +101,8 @@
     UIInterpolatingMotionEffect *vertMotionEffect =
     [self RCC_verticalEffectWithMinDistance:@(-self.verticalPadding)
                              andMaxDistance:@(self.verticalPadding)];
+    
+    // Adds the motion effect
     [self.imageView addMotionEffect:horizMotionEffect];
     [self.imageView addMotionEffect:vertMotionEffect];
 }
@@ -108,9 +111,9 @@
                                                       andMaxDistance:(NSNumber *)max
 {
     UIInterpolatingMotionEffect *motionEffect =
-    [[UIInterpolatingMotionEffect alloc]
-     initWithKeyPath:@"center.x"
-     type:UIInterpolatingMotionEffectTypeTiltAlongHorizontalAxis];
+    [[UIInterpolatingMotionEffect alloc] initWithKeyPath:@"center.x"
+                                                    type:UIInterpolatingMotionEffectTypeTiltAlongHorizontalAxis];
+    
     motionEffect.minimumRelativeValue = min;
     motionEffect.maximumRelativeValue = max;
     
@@ -122,9 +125,9 @@
                                                     andMaxDistance:(NSNumber *)max
 {
     UIInterpolatingMotionEffect *motionEffect =
-    [[UIInterpolatingMotionEffect alloc]
-     initWithKeyPath:@"center.y"
-     type:UIInterpolatingMotionEffectTypeTiltAlongVerticalAxis];
+    [[UIInterpolatingMotionEffect alloc] initWithKeyPath:@"center.y"
+                                                    type:UIInterpolatingMotionEffectTypeTiltAlongVerticalAxis];
+    
     motionEffect.minimumRelativeValue = min;
     motionEffect.maximumRelativeValue = max;
     
@@ -138,7 +141,9 @@
     self.horizontalPadding = 40;
     self.verticalPadding = 40;
     
-    // Clip subviews
+    self.conversionImageWidth = 515.0f;
+    self.conversionImageHeight = 640.0f;
+    
     self.clipsToBounds = YES;
     
     // Add image subview
