@@ -1,4 +1,5 @@
 # [ILParabolicImageView](https://github.com/IcaliaLabs/ILParabolicImageView)
+[![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/IcaliaLabs/ILParabolicImageView?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 
 ILParabolicImageView is a super simple library to add a moving effect to an image as the phone moves
